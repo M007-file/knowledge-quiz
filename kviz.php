@@ -6,6 +6,7 @@ if ( !empty($_POST['otazek']) ) {
   $kvizovychotazek = 20;
   //$kvizovychotazek = 2;
 }
+
 function dequote($quotedstring){
   if (str_contains($quotedstring, "'")) {
     $uvozovky = array("'", "'");
@@ -15,6 +16,7 @@ function dequote($quotedstring){
   }
   return $quotedstring;
 }
+
 ?>
 <!DOCTYPE html>
 <head> 
@@ -51,7 +53,8 @@ function utoa(data) {
 <body style="margin-top:5%;" onLoad="disableClick()">
 <form id="regForm" action="action.php?otazek=<?php echo $kvizovychotazek;?>" method="POST">
   <h1>Znalostní kvíz (<?php echo $kvizovychotazek; ?> otázek):</h1>
-  <br /><a href="index.php">Domů</a>&nbsp; &nbsp; &nbsp; <a href="kviz.php">Kvíz s výchozím počtem otázek (20)</a>&nbsp; &nbsp; &nbsp; <a href="action.php">Výsledky</a>
+  <br /><a href="index.php">Domů</a>&nbsp; &nbsp; &nbsp; <a href="kviz.php">Kvíz s výchozím počtem otázek (20)</a>&nbsp; &nbsp; &nbsp; <a href="action.php">Výsledky</a>&nbsp; &nbsp; &nbsp; <a class="a2a_dd" href="https://www.addtoany.com/share">Sdílet</a>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
   <div class="tab">Jméno:
     <p><input placeholder="Křestní jméno..." oninput="this.className = ''" name="fname" required="required"></p>
     <p><input placeholder="Příjmení..." oninput="this.className = ''" name="lname" required="required"></p>
@@ -99,7 +102,6 @@ if (mysqli_num_rows($resultsql)>0) {
       $scriptdiv = "   <script>";
       while($rowodpovedi = mysqli_fetch_assoc($resultsqlodpovedi)) {
         $idodpovedi = $rowodpovedi['id'];
-        //$txtodpovedi = $rowodpovedi['odpoved'];
         $txtodpovedi = dequote($rowodpovedi['odpoved']); //odstraneni apostrofu
         $idotazky = $rowodpovedi['otazka'];
         $boduzaodpoved = $rowodpovedi['bodu'];

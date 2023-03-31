@@ -12,7 +12,8 @@ require_once("config.php");
 <body style="margin-top:5%;">
 <form id="regForm" action="kviz.php" method="post">
 <h1>Znalostní kvíz:</h1>
-<br /><a href="index.php">Domů</a>&nbsp; &nbsp; &nbsp; <a href="kviz.php">Kvíz s výchozím počtem otázek (20)</a>&nbsp; &nbsp; &nbsp; <a href="action.php">Výsledky</a>
+<br /><a href="index.php">Domů</a>&nbsp; &nbsp; &nbsp; <a href="kviz.php">Kvíz s výchozím počtem otázek (20)</a>&nbsp; &nbsp; &nbsp; <a href="action.php">Výsledky</a>&nbsp; &nbsp; &nbsp; <a class="a2a_dd" href="https://www.addtoany.com/share">Sdílet</a>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
 <div class="tab">
 <?php
 $sqlpocetotazek = "SELECT DISTINCT COUNT(`otazka`) AS k FROM `otazky`";
@@ -33,7 +34,7 @@ if (mysqli_num_rows($poctysql)>0) {
     $pocetkategorii = $rowpocty['KatPocet'];
   }
 }
-echo "<p><br /><h2>Statistiky počtu otázek k použití:</h2>Počet všech otázek: ".$pocetotazek."<br />\r\nPočet všech kategorií: ".$pocetkategorii."<br />\r\nPočet všech odpovědí: ".$pocetodpovedi."<br />\r\n</p>";
+echo "<p><br /><h2>Statistiky počtu otázek k použití:</h2>Počet všech otázek: ".$pocetotazek."<br />\r\nPočet všech kategorií: ".$pocetkategorii."<br />\r\nPočet všech odpovědí: ".$pocetodpovedi."</p>";
 ?>
 </div>
 <div style="overflow:auto;margin-right: auto;margin-left:auto;border:none;"></div>
